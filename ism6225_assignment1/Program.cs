@@ -26,13 +26,12 @@ namespace ism6225_assignment1
             int[] J = new int[] { 1, 3 };
             int[] S = new int[] { 1, 3, 3, 2, 2, 2, 2, 2 };
             int r4 = numJewelsInStones(J, S);
-            Console.WriteLine("The number of jewels is " + r4);
+            Console.WriteLine("The number of jewels is  " + r4);
 
             int[] arr1 = new int[] { 1, 2, 5, 6, 7, 8, 9 };
             int[] arr2 = new int[] { 1, 2, 3, 4, 5 };
             int[] r5 = getLargestCommonSubArray(arr1, arr2);
-            //Console.WriteLine(r5);
-            displayArray(r5);
+            //displayArray(r5);
 
             solvePuzzle();
         }
@@ -41,16 +40,17 @@ namespace ism6225_assignment1
         {
             try
             {
-                var arrList = new List<int>();
-                for (int i = x; i <= y; i++)
+                var arrList = new List<int>(); // initialize array to store the values of self dividing numbers
+                for (int i = x; i <= y; i++) // to iterate through each and use isSelfDividing method
+                                             //and store the values in the arrList
                 {
                     if (isSelfDividing(i))
                         arrList.Add(i);
                 }
-                int[] arrResult = arrList.ToArray();
+                int[] arrResult = arrList.ToArray(); // array created to store the results 
 
-                Console.WriteLine("The range of self dividing numbers:" +  
-                    "[{0}]", string.Join(", ", arrResult));
+                Console.WriteLine("The range of self dividing numbers:" +
+                    "[{0}]", string.Join(", ", arrResult)); // printing output
                 Console.WriteLine("\n");
 
 
@@ -61,6 +61,8 @@ namespace ism6225_assignment1
             }
         }
 
+
+        // the isSelfDividing method is created to check if the value is self dividing
         private static bool isSelfDividing(int x) {
 
             int input = x;
@@ -86,16 +88,19 @@ namespace ism6225_assignment1
                 int x, y;
                 int count = 0;
 
-                for (x = 1; x <= number; x++)
+
+                for (x = 1; x <= number; x++) // the for loop iterates through the values to print them until the N terms
 
                 {
-                    for (y = 1; y <= x; y++)
+                    for (y = 1; y <= x; y++) // this for loop iterates through each value 
+                                             //and prints them based off the counter
 
                         if (count < number)
                         {
                             Console.Write(x);
 
-                            if (count < n - 1) {
+                            // for loop to get rid of the last comma
+                            if (count < n - 1) { // this particular if statement adds comma after each number
                                 Console.Write(", ");
                             }
 
@@ -115,13 +120,14 @@ namespace ism6225_assignment1
         {
             try
             {
+                // the for loop iterates in order to print blank strings as well as stars for the triangle
                 for (int i = n; i >= 1; i--)
                 {
-                    for (int x = n; x > i; x--)
+                    for (int x = n; x > i; x--) // iteration prints the required number of blanks to create the triangle
                     {
                         Console.Write("  ");
                     }
-                    for (int y = 1; y < 2 * i; y++)
+                    for (int y = 1; y < 2 * i; y++) // iteration prints the required number of stars to create the triangle
                     {
                         Console.Write("* ");
                     }
@@ -142,16 +148,16 @@ namespace ism6225_assignment1
             {
                 int intCounter = 0;
 
-                foreach (int i in S)
+                foreach (int i in S) // the foreach loop iterates through the stones array to identify the jewels
                 {
-                    foreach (int x in J)
+                    foreach (int x in J) // the foreach loop increments the counter which represents number of jewels
                     {
                         if (i == x)
                             intCounter++;
                     }
                 }
 
-                return intCounter;
+                return intCounter; // the method returns the counter - number of jewels found in the stones array
             }
 
             catch
